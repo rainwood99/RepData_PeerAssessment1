@@ -1,10 +1,6 @@
----
-title: "Reproducible Research: Peer Assessment 1"
-output: 
-  html_document:
-    keep_md: true
----
+# Reproducible Research: Peer Assessment 1
 
+---
 
 
 ## Loading and preprocessing the data
@@ -20,13 +16,6 @@ data <- read.csv("activity.csv")
 
 ```r
 library(ggplot2)
-```
-
-```
-## Warning: package 'ggplot2' was built under R version 3.1.3
-```
-
-```r
 total.steps <- tapply(data$steps, data$date, FUN=sum, na.rm=TRUE)
 qplot(total.steps, binwidth=1000, xlab="total number of steps taken each day")
 ```
@@ -37,13 +26,17 @@ qplot(total.steps, binwidth=1000, xlab="total number of steps taken each day")
 mean(total.steps, na.rm=TRUE)
 ```
 
-[1] 9354.23
+```
+## [1] 9354.23
+```
 
 ```r
 median(total.steps, na.rm=TRUE)
 ```
 
-[1] 10395
+```
+## [1] 10395
+```
 
 
 ## What is the average daily activity pattern?
@@ -68,8 +61,10 @@ the maximum number of steps?
 averages[which.max(averages$steps),]
 ```
 
-    interval    steps
-104      835 206.1698
+```
+##     interval    steps
+## 104      835 206.1698
+```
 
 
 ## Imputing missing values
@@ -83,9 +78,11 @@ missing <- is.na(data$steps)
 table(missing)
 ```
 
-missing
-FALSE  TRUE 
-15264  2304 
+```
+## missing
+## FALSE  TRUE 
+## 15264  2304
+```
 
 All of the missing values are filled in with mean value for that 5-minute
 interval.
@@ -118,13 +115,17 @@ qplot(total.steps, binwidth=1000, xlab="total number of steps taken each day")
 mean(total.steps)
 ```
 
-[1] 10766.19
+```
+## [1] 10766.19
+```
 
 ```r
 median(total.steps)
 ```
 
-[1] 10766.19
+```
+## [1] 10766.19
+```
 
 Mean and median values are higher after imputing missing data. The reason is
 that in the original data, there are some days with `steps` values `NA` for 
